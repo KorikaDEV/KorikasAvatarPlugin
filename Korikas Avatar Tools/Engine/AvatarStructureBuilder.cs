@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEditor.Animations;
 using VRCSDK2;
 
-public class OverrideBuilder : MonoBehaviour{
+public class AvatarStructureBuilder : MonoBehaviour{
     public static void BuildOverride(GameObject selected) {
 
         string nameval = selected.name;

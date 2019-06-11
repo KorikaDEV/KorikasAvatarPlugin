@@ -20,59 +20,48 @@ public class AvatarContentsCopy {
         {
             options[1] = false;
         }
-		if (options [0] == true) {
-			copyGameObjects(source, destination);
-		}
-		if (options [1] == true) {
-			copyParticleSystems(source, destination);
-		}
-		if (options [2] == true) {
-			copyDynamicBones (source, destination);
-		}
-    }
-	//COPY PARTICLE SYSTEMS
-	public static void copyParticleSystems(GameObject source, GameObject destination){
 		Animator anSource = source.GetComponent<Animator>();
 		Animator anDestination = destination.GetComponent<Animator>();
 		//HIPS
-		checkAndCopyParticleSystems(anSource, anDestination, HumanBodyBones.Hips);
+		converter(options, anSource, anDestination, HumanBodyBones.Hips, HumanBodyBones.Spine);
 		//SPINE
-		checkAndCopyParticleSystems(anSource, anDestination, HumanBodyBones.Spine);
+		converter(options, anSource, anDestination, HumanBodyBones.Spine, HumanBodyBones.Chest);
 		//CHEST
-		checkAndCopyParticleSystems(anSource, anDestination, HumanBodyBones.Chest);
+		converter(options, anSource, anDestination, HumanBodyBones.Chest, HumanBodyBones.Neck);
 		//NECK
-		checkAndCopyParticleSystems(anSource, anDestination, HumanBodyBones.Neck);
+		converter(options, anSource, anDestination, HumanBodyBones.Neck, HumanBodyBones.Head);
 		//HEAD
-		checkAndCopyParticleSystems(anSource, anDestination, HumanBodyBones.Head);
+		converter(options, anSource, anDestination, HumanBodyBones.Head, HumanBodyBones.Head);
 
 		//LEFTUPPERLEG
-		checkAndCopyParticleSystems(anSource, anDestination, HumanBodyBones.LeftUpperLeg);
-		//LEFTLOWERELG
-		checkAndCopyParticleSystems(anSource, anDestination, HumanBodyBones.LeftLowerLeg);
+		converter(options, anSource, anDestination, HumanBodyBones.LeftUpperLeg, HumanBodyBones.LeftLowerLeg);
+		//LEFTLOWERLEG
+		converter(options, anSource, anDestination, HumanBodyBones.LeftLowerLeg, HumanBodyBones.LeftFoot);
 		//LEFTFOOT
-		checkAndCopyParticleSystems(anSource, anDestination, HumanBodyBones.LeftFoot);
+		converter(options, anSource, anDestination, HumanBodyBones.LeftFoot, HumanBodyBones.LeftFoot);
 
 		//RIGHTUPPERLEG
-		checkAndCopyParticleSystems(anSource, anDestination, HumanBodyBones.RightUpperLeg);
+		converter(options, anSource, anDestination, HumanBodyBones.RightUpperLeg, HumanBodyBones.RightLowerLeg);
 		//RIGHTLOWERLEG
-		checkAndCopyParticleSystems(anSource, anDestination, HumanBodyBones.RightLowerLeg);
+		converter(options, anSource, anDestination, HumanBodyBones.RightLowerLeg, HumanBodyBones.RightFoot);
 		//RIGHTFOOT
-		checkAndCopyParticleSystems(anSource, anDestination, HumanBodyBones.RightFoot);
+		converter(options, anSource, anDestination, HumanBodyBones.RightFoot, HumanBodyBones.RightFoot);
 
 		//LEFTUPPERARM
-		checkAndCopyParticleSystems(anSource, anDestination, HumanBodyBones.LeftUpperArm);
+		converter(options, anSource, anDestination, HumanBodyBones.LeftUpperArm, HumanBodyBones.LeftLowerArm);
 		//LEFTLOWERARM
-		checkAndCopyParticleSystems(anSource, anDestination, HumanBodyBones.LeftLowerArm);
+		converter(options, anSource, anDestination, HumanBodyBones.LeftLowerArm, HumanBodyBones.LeftHand);
 		//LEFTHAND
-		checkAndCopyParticleSystems(anSource, anDestination, HumanBodyBones.LeftHand);
+		converter(options, anSource, anDestination, HumanBodyBones.LeftHand, HumanBodyBones.LeftHand);
 
 		//RIGHTUPPERARM
-		checkAndCopyParticleSystems(anSource, anDestination, HumanBodyBones.RightUpperArm);
+		converter(options, anSource, anDestination, HumanBodyBones.RightUpperArm, HumanBodyBones.RightLowerArm);
 		//RIGHTLOWERARM
-		checkAndCopyParticleSystems(anSource, anDestination, HumanBodyBones.RightLowerArm);
+		converter(options, anSource, anDestination, HumanBodyBones.RightLowerArm, HumanBodyBones.RightHand);
 		//RIGHTHAND
-		checkAndCopyParticleSystems(anSource, anDestination, HumanBodyBones.RightHand);
-	}
+		converter(options, anSource, anDestination, HumanBodyBones.RightHand, HumanBodyBones.RightHand);
+
+    }
 	public static void checkAndCopyParticleSystems(Animator from, Animator to, HumanBodyBones bone)
 	{
 		foreach (Transform child in from.GetBoneTransform(bone))
@@ -85,50 +74,6 @@ public class AvatarContentsCopy {
 			}
 		}
 		removeDoubles(to, bone);
-	}
-	//COPY DYNAMIC BONES
-	public static void copyDynamicBones(GameObject source, GameObject destination){
-		Animator anSource = source.GetComponent<Animator>();
-		Animator anDestination = destination.GetComponent<Animator>();
-		//HIPS
-		checkDoublesAndCopyDynamicBones(anSource, anDestination, HumanBodyBones.Hips);
-		//SPINE
-		checkDoublesAndCopyDynamicBones(anSource, anDestination, HumanBodyBones.Spine);
-		//CHEST
-		checkDoublesAndCopyDynamicBones(anSource, anDestination, HumanBodyBones.Chest);
-		//NECK
-		checkDoublesAndCopyDynamicBones(anSource, anDestination, HumanBodyBones.Neck);
-		//HEAD
-		checkDoublesAndCopyDynamicBones(anSource, anDestination, HumanBodyBones.Head);
-
-		//LEFTUPPERLEG
-		checkDoublesAndCopyDynamicBones(anSource, anDestination, HumanBodyBones.LeftUpperLeg);
-		//LEFTLOWERELG
-		checkDoublesAndCopyDynamicBones(anSource, anDestination, HumanBodyBones.LeftLowerLeg);
-		//LEFTFOOT
-		checkDoublesAndCopyDynamicBones(anSource, anDestination, HumanBodyBones.LeftFoot);
-
-		//RIGHTUPPERLEG
-		checkDoublesAndCopyDynamicBones(anSource, anDestination, HumanBodyBones.RightUpperLeg);
-		//RIGHTLOWERLEG
-		checkDoublesAndCopyDynamicBones(anSource, anDestination, HumanBodyBones.RightLowerLeg);
-		//RIGHTFOOT
-		checkDoublesAndCopyDynamicBones(anSource, anDestination, HumanBodyBones.RightFoot);
-
-		//LEFTUPPERARM
-		checkDoublesAndCopyDynamicBones(anSource, anDestination, HumanBodyBones.LeftUpperArm);
-		//LEFTLOWERARM
-		checkDoublesAndCopyDynamicBones(anSource, anDestination, HumanBodyBones.LeftLowerArm);
-		//LEFTHAND
-		checkDoublesAndCopyDynamicBones(anSource, anDestination, HumanBodyBones.LeftHand);
-
-		//RIGHTUPPERARM
-		checkDoublesAndCopyDynamicBones(anSource, anDestination, HumanBodyBones.RightUpperArm);
-		//RIGHTLOWERARM
-		checkDoublesAndCopyDynamicBones(anSource, anDestination, HumanBodyBones.RightLowerArm);
-		//RIGHTHAND
-		checkDoublesAndCopyDynamicBones(anSource, anDestination, HumanBodyBones.RightHand);
-
 	}
 
 	public static void checkDoublesAndCopyDynamicBones (Animator from, Animator to, HumanBodyBones bone){
@@ -148,77 +93,6 @@ public class AvatarContentsCopy {
 			}
 		}
 	}
-
-	//COPY GAMEOBJECTS
-    public static void copyGameObjects(GameObject source, GameObject destination)
-    {
-        Animator anSource = source.GetComponent<Animator>();
-        Animator anDestination = destination.GetComponent<Animator>();
-
-        //HIPS
-        foreach(Transform child in anSource.GetBoneTransform(HumanBodyBones.Hips))
-        {
-            if(child != anSource.GetBoneTransform(HumanBodyBones.Spine) &&
-                child != anSource.GetBoneTransform(HumanBodyBones.LeftUpperLeg) &&
-                child != anSource.GetBoneTransform(HumanBodyBones.RightUpperLeg))
-            {
-                string name = child.gameObject.name;
-                GameObject g = (GameObject)UnityEngine.Object.Instantiate(child.gameObject, anDestination.GetBoneTransform(HumanBodyBones.Hips));
-                g.name = name;
-            }
-        }
-        removeDoubles(anDestination, HumanBodyBones.Hips);
-        //SPINE
-        checkWithOneChild(HumanBodyBones.Spine, HumanBodyBones.Chest, anSource, anDestination);
-        //CHEST
-        foreach (Transform child in anSource.GetBoneTransform(HumanBodyBones.Chest))
-        {
-            if (child != anSource.GetBoneTransform(HumanBodyBones.Neck) &&
-                child != anSource.GetBoneTransform(HumanBodyBones.LeftShoulder) &&
-                child != anSource.GetBoneTransform(HumanBodyBones.RightShoulder))
-            {
-                string name = child.gameObject.name;
-                GameObject g = (GameObject)UnityEngine.Object.Instantiate(child.gameObject, anDestination.GetBoneTransform(HumanBodyBones.Chest));
-                g.name = name;
-            }
-        }
-        removeDoubles(anDestination, HumanBodyBones.Chest);
-        //NECK
-        checkWithOneChild(HumanBodyBones.Neck, HumanBodyBones.Head, anSource, anDestination);
-        //HEAD
-        checkWithOneChild(HumanBodyBones.Head, HumanBodyBones.Neck, anSource, anDestination);
-
-        //LEFTUPPERLEG
-        checkWithOneChild(HumanBodyBones.LeftUpperLeg, HumanBodyBones.LeftLowerLeg, anSource, anDestination);
-        //LEFTLOWERLEG
-        checkWithOneChild(HumanBodyBones.LeftLowerLeg, HumanBodyBones.LeftFoot, anSource, anDestination);
-        //LEFTFOOT
-        checkWithOneChild(HumanBodyBones.LeftFoot, HumanBodyBones.LeftFoot, anSource, anDestination);
-
-        //RIGHTUPPERLEG
-        checkWithOneChild(HumanBodyBones.RightUpperLeg, HumanBodyBones.RightLowerLeg, anSource, anDestination);
-        //RIGHTLOWERLEG
-        checkWithOneChild(HumanBodyBones.RightLowerLeg, HumanBodyBones.RightFoot, anSource, anDestination);
-        //RIGHTFOOT
-        checkWithOneChild(HumanBodyBones.RightFoot, HumanBodyBones.LeftFoot, anSource, anDestination);
-
-        //LEFTUPPERARM
-        checkWithOneChild(HumanBodyBones.LeftUpperArm, HumanBodyBones.LeftLowerArm, anSource, anDestination);
-        //LEFTLOWERARM
-        checkWithOneChild(HumanBodyBones.LeftLowerArm, HumanBodyBones.LeftHand, anSource, anDestination);
-        //LEFTHAND
-        checkWithOneChild(HumanBodyBones.LeftHand, HumanBodyBones.LeftHand, anSource, anDestination);
-
-        //RIGHTUPPERARM
-        checkWithOneChild(HumanBodyBones.RightUpperArm, HumanBodyBones.RightLowerArm, anSource, anDestination);
-        //RIGHTLOWERARM
-        checkWithOneChild(HumanBodyBones.RightLowerArm, HumanBodyBones.RightHand, anSource, anDestination);
-        //RIGHTHAND
-        checkWithOneChild(HumanBodyBones.RightHand, HumanBodyBones.RightHand, anSource, anDestination);
-
-
-
-    }
     public static void checkWithOneChild(HumanBodyBones yesbone, HumanBodyBones nobone, Animator from, Animator to)
     {
         foreach (Transform child in from.GetBoneTransform(yesbone))
@@ -249,4 +123,43 @@ public class AvatarContentsCopy {
         }
 
     }
+	public static void converter(bool[] kind, Animator from, Animator to, HumanBodyBones bone, HumanBodyBones noAnime){
+		if(kind[0] == true){
+			if(bone == HumanBodyBones.Hips){
+				foreach(Transform child in from.GetBoneTransform(HumanBodyBones.Hips))
+				{
+					if(child != from.GetBoneTransform(HumanBodyBones.Spine) &&
+						child != from.GetBoneTransform(HumanBodyBones.LeftUpperLeg) &&
+						child != from.GetBoneTransform(HumanBodyBones.RightUpperLeg))
+					{
+						string name = child.gameObject.name;
+						GameObject g = (GameObject)UnityEngine.Object.Instantiate(child.gameObject, to.GetBoneTransform(HumanBodyBones.Hips));
+						g.name = name;
+					}
+				}
+				removeDoubles(to, HumanBodyBones.Hips);
+			}else if(bone == HumanBodyBones.Chest){
+				foreach(Transform child in from.GetBoneTransform(HumanBodyBones.Chest))
+				{
+					if (child != from.GetBoneTransform(HumanBodyBones.Neck) &&
+                	child != from.GetBoneTransform(HumanBodyBones.LeftShoulder) &&
+                	child != from.GetBoneTransform(HumanBodyBones.RightShoulder))
+					{
+						string name = child.gameObject.name;
+						GameObject g = (GameObject)UnityEngine.Object.Instantiate(child.gameObject, to.GetBoneTransform(HumanBodyBones.Hips));
+						g.name = name;
+					}
+				}
+				removeDoubles(to, HumanBodyBones.Chest);
+			}else{
+				checkWithOneChild(bone, noAnime, from, to);
+			}
+		}
+		if(kind[1] == true){
+			checkAndCopyParticleSystems(from, to, bone);
+		}
+		if(kind[2] == true){
+			checkDoublesAndCopyDynamicBones(from, to, bone);
+		}
+	}
 }

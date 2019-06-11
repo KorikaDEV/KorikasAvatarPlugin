@@ -34,16 +34,15 @@ public class MainWindow : EditorWindow {
         window.minSize = window.maxSize;
     }
 	void OnGUI(){
-		initColor ();
 		tex = new Texture2D(1, 1, TextureFormat.RGBA32, false);
+		initColor ();
 		tex.SetPixel(0, 0, background);
 		tex.Apply();
 		GUI.DrawTexture(new Rect(0, 0, position.width,position.height), tex, ScaleMode.StretchToFill);
 		GUI.Label(new Rect(200, 200, 100, 100), "");
 		GUI.TextField(new Rect(20, 20, 70, 30), "");
 		GUI.backgroundColor = buttons;
-        
-		Texture logo = (Texture)AssetDatabase.LoadAssetAtPath("Assets/Korikas Avatar Tools/logo.png", typeof(Texture));
+		Texture logo = (Texture)AssetDatabase.LoadAssetAtPath("Assets/Korikas-Avatar-Tool/Korikas Avatar Tools/logo.png", typeof(Texture));
 		GUI.DrawTexture(new Rect(0, 0, position.width,70), logo, ScaleMode.ScaleAndCrop);
 
         string[] toolbarString = {"gestures", "generate", "copy", "credits"};
@@ -85,7 +84,7 @@ public class MainWindow : EditorWindow {
 		if (model != null) {
 			bool btn = GUILayout.Button ("do it!");
 			if (btn == true) {
-				OverrideBuilder.BuildOverride (model);
+				AvatarStructureBuilder.BuildOverride (model);
 			}
 		} else {
 			GUI.enabled = false;
