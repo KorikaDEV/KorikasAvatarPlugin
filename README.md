@@ -4,9 +4,9 @@ Its a tool for making simple steps while setting up your VRChat avatar quicker. 
 
 Other features are things like seeing all hand-emotes in play-mode and copying contents from one avatar to another.
 ## Download
-not yet!
+https://github.com/KorikaDEV/Korikas-Avatar-Tool/releases/tag/1.0.0
 ## How do I use it?
-not yet!
+There will be a tutorial!
 ## Links
 [Discord](https://discord.gg/z2SmFqg)
 
