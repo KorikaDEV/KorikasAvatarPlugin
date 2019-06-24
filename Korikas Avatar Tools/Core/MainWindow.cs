@@ -29,14 +29,14 @@ public class MainWindow : EditorWindow
     int toolbarInt = 0;
 
     private static Texture2D tex;
+    static Vector2 scrollPosition = Vector2.zero;
 
     [MenuItem("Korikas Avatar Tools/Main")]
     public static void ShowWindow()
     {
 
         EditorWindow window = EditorWindow.GetWindow<MainWindow>("KAT v1.0.0");
-        window.maxSize = new Vector2(265, 265);
-        window.minSize = window.maxSize;
+        window.minSize = new Vector2(265, 265);
     }
     void OnGUI()
     {
@@ -62,7 +62,7 @@ public class MainWindow : EditorWindow
         EditorGUILayout.Space();
         EditorGUILayout.Space();
         EditorGUILayout.Space();
-
+        scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true,  GUILayout.Width(position.width),  GUILayout.Height(position.height - 74));
         switch (toolbarInt)
         {
             case 0:
@@ -81,6 +81,7 @@ public class MainWindow : EditorWindow
                 RenderCreditsTab();
                 break;
         }
+        EditorGUILayout.EndScrollView();
 
     }
 
@@ -104,9 +105,23 @@ public class MainWindow : EditorWindow
             GUI.enabled = true;
         }
         GUILayout.Label("generate beatfinder animation", EditorStyles.boldLabel);
-        beatfindersource = (GameObject)EditorGUILayout.ObjectField("your gameobject:", model, typeof(GameObject), true);
-        beatfinder = (TextAsset)EditorGUILayout.ObjectField("your beatfinder file:", model, typeof(TextAsset), true);
-        GUILayout.Button("generate beatfinder animation");
+        beatfindersource = (GameObject)EditorGUILayout.ObjectField("your gameobject:", beatfindersource, typeof(GameObject), true);
+        beatfinder = (TextAsset)EditorGUILayout.ObjectField("your beatfinder file:", beatfinder, typeof(TextAsset), true);
+        bool beatbutton = false;
+        if(beatfindersource != null){
+            if(!BeatFinder.ifHasStructure(beatfindersource)){
+                GUI.enabled = false;
+                beatbutton = GUILayout.Button("gameobject not ready");
+                GUI.enabled = true;
+            }else{
+                beatbutton = GUILayout.Button("generate beatfinder animation");
+            }
+        }else{
+            beatbutton = GUILayout.Button("generate beatfinder animation");
+        }
+        if(beatbutton){
+            BeatFinder.generateBeatAnimation(beatfinder, beatfindersource);
+        }
     }
 
     public void RenderCopyContentsTab()
@@ -142,7 +157,7 @@ public class MainWindow : EditorWindow
         else
         {
             GUI.enabled = false;
-            GUILayout.Button("please select 2 GameObject");
+            GUILayout.Button("please select 2 GameObjects");
             GUI.enabled = true;
         }
         GUI.enabled = false;
