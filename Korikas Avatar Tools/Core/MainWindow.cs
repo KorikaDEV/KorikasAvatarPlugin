@@ -35,7 +35,7 @@ public class MainWindow : EditorWindow
     public static void ShowWindow()
     {
 
-        EditorWindow window = EditorWindow.GetWindow<MainWindow>("KAT v1.0.0");
+        EditorWindow window = EditorWindow.GetWindow<MainWindow>("KAT v1.0.1");
         window.minSize = new Vector2(265, 265);
     }
     void OnGUI()
@@ -108,16 +108,18 @@ public class MainWindow : EditorWindow
         beatfindersource = (GameObject)EditorGUILayout.ObjectField("your gameobject:", beatfindersource, typeof(GameObject), true);
         beatfinder = (TextAsset)EditorGUILayout.ObjectField("your beatfinder file:", beatfinder, typeof(TextAsset), true);
         bool beatbutton = false;
-        if(beatfindersource != null){
+        if(!(beatfindersource == null || beatfindersource == null)){
             if(!BeatFinder.ifHasStructure(beatfindersource)){
                 GUI.enabled = false;
-                beatbutton = GUILayout.Button("gameobject not ready");
+                beatbutton = GUILayout.Button("setup not ready");
                 GUI.enabled = true;
             }else{
                 beatbutton = GUILayout.Button("generate beatfinder animation");
             }
         }else{
-            beatbutton = GUILayout.Button("generate beatfinder animation");
+            GUI.enabled = false;
+            beatbutton = GUILayout.Button("somethings missing");
+            GUI.enabled = true;
         }
         if(beatbutton){
             BeatFinder.generateBeatAnimation(beatfinder, beatfindersource);
