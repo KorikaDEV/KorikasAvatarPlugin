@@ -42,7 +42,7 @@ public class MainWindow : EditorWindow
     public static void ShowWindow()
     {
 
-        EditorWindow window = EditorWindow.GetWindow<MainWindow>("KAT v1.0.1");
+        EditorWindow window = EditorWindow.GetWindow<MainWindow>("KAT v1.1.1");
         window.minSize = new Vector2(265, 265);
     }
     void OnGUI()
