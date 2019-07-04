@@ -14,7 +14,7 @@ There will be a tutorial!
 - VRChats SDK
 - Dynamic Bones
 ## Links
-[Discord](https://discord.gg/z2SmFqg) [VRCMods](https://vrcmods.com/user/Korika) [Youtube](https://www.youtube.com/channel/UCRyYgGgXM6ugIjfmgQ6Go3A?view_as=subscriber)
+[Discord](https://discord.gg/z2SmFqg) [VRCMods](https://vrcmods.com/user/Korika) [Youtube](https://www.youtube.com/channel/UCRyYgGgXM6ugIjfmgQ6Go3A?view_as=subscriber) [CodeFactor](https://www.codefactor.io/repository/github/korikadev/korikas-avatar-tool)
 
 ![alt text](https://raw.githubusercontent.com/KorikaDEV/Korikas-Avatar-Tool/master/Korikas%20Avatar%20Tools/logo.png)
 
