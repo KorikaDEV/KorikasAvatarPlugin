@@ -12,7 +12,7 @@ It manages your projects structure, generates animations, copies contents from a
 The main-feature of the plugin is the generation of the project structure that works like in this gif:
 ![](https://raw.githubusercontent.com/KorikaDEV/Korikas-Avatar-Tool/master/how%20it%20goes.gif)
 ## Where are the ideas coming from?
-I really fell in love with VRChat based unity tools and thats why I am trying to gather them all into one usefull plugin. Thats the reason, why you will find some features in other projects based on VRChat!
+I really fell in love with VRChat based unity tools and thats why I am trying to gather them all into one usefull plugin. Thats the reason, why you will find some features in other projects based on VRChat! That doesnt mean, that I steal code. Everything within this project is self-implemented and I wish, that where was some kind of way, to show you that Im not stealing your credentails!
 ## How do I use it?
 There will be a tutorial!
 ## Download
