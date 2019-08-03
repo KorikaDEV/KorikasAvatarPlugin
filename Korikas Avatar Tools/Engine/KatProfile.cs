@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using VRCSDK2;
 using System.IO;
+using UnityEditor.SceneManagement;
 
 namespace KatStuff
 {
@@ -25,8 +26,12 @@ namespace KatStuff
         string json = JsonUtility.ToJson(this);
         File.WriteAllText(Application.dataPath + "/KATAvatars/" + name + "/" + name + ".katprofile", json);
     }
-    public KatProfile fromFile(string path){
-        return null;
+    public KatProfile fromFile(string name){
+        string json = File.ReadAllText(Application.dataPath + "/KATAvatars/" + name + "/" + name + ".katprofile");
+        return JsonUtility.FromJson<KatProfile>(json);
+    }
+    public void openScene(){
+        EditorSceneManager.OpenScene("Assets/KATAvatars/" + name + "/" + name + ".unity");
     }
     public void initProfile(GameObject obj){
         this.name = obj.name;
