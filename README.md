@@ -15,8 +15,9 @@ The main-feature of the plugin is the generation of the project structure that w
 I really fell in love with VRChat based unity tools and thats why I am trying to gather them all into one usefull plugin. Thats the reason, why you will find some features in other projects based on VRChat! That doesnt mean, that I steal code. Everything within this project is self-implemented and I wish, that where was some kind of way, to show you that Im not stealing your credentails!
 ## How do I use it?
 There will be a tutorial!
-## Download
-[here](https://github.com/KorikaDEV/Korikas-Avatar-Tool/releases/tag/1.1.4)
+## Installation
+- download the latest version [here](https://github.com/KorikaDEV/Korikas-Avatar-Tool/releases/tag/1.1.4)!
+- drag and drop it into your Unity project
 ## Requirements
 - VRChats SDK
 - Dynamic Bones
