@@ -6,7 +6,6 @@ public class MainUI : EditorWindow
 
     static GameObject source;
     static GameObject destination;
-    static GameObject model;
     static GameObject beatfindersource;
 
     public bool fingerpoint = false;
@@ -61,14 +60,7 @@ public class MainUI : EditorWindow
         string[] toolbarString = { "gestures", "generate", "copy", "credits" };
         toolbarInt = GUILayout.Toolbar(toolbarInt, toolbarString);
 
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
+        GUILayout.Space(50);
         scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true,  GUILayout.Width(position.width),  GUILayout.Height(position.height - 74));
         switch (toolbarInt)
         {
@@ -94,23 +86,6 @@ public class MainUI : EditorWindow
 
     public void renderGenerationTab()
     {
-        GUILayout.Label("generate structure", EditorStyles.boldLabel);
-
-        model = (GameObject)EditorGUILayout.ObjectField("select your avatar:", model, typeof(GameObject), true);
-        if (model != null)
-        {
-            bool btn = GUILayout.Button("do it!");
-            if (btn == true)
-            {
-                AvatarStructureBuilder.BuildOverride(model);
-            }
-        }
-        else
-        {
-            GUI.enabled = false;
-            GUILayout.Button("please select a .fbx");
-            GUI.enabled = true;
-        }
         GUILayout.Label("generate beatfinder animation", EditorStyles.boldLabel);
         beatfinder = (TextAsset)EditorGUILayout.ObjectField("your beatfinder file:", beatfinder, typeof(TextAsset), true);
         audio = (AudioClip)EditorGUILayout.ObjectField("your audio:", audio, typeof(AudioClip), true);

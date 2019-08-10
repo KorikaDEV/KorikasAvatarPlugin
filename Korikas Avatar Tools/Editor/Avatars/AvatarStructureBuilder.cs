@@ -79,6 +79,7 @@ public class AvatarStructureBuilder : MonoBehaviour
         addLipSync(newobj);
 
         EditorApplication.SaveScene("Assets/KATAvatars/" + nameval + "/" + nameval + ".unity");
+		AssetDatabase.Refresh();
     }
 
     public static void CreateAnimationFiles(string name)

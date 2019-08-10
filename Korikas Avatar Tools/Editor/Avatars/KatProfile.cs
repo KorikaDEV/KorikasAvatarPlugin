@@ -1,7 +1,9 @@
 using System;
 using UnityEngine;
+using UnityEditor;
 using VRCSDK2;
 using System.IO;
+using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 
 namespace KatStuff
@@ -18,20 +20,33 @@ namespace KatStuff
     public int animators;
     public int lights;
     public int audio_sources;
+	public PerformanceProfile perfP;
 
     public KatProfile(GameObject obj){
         initProfile(obj);
+    }
+    public void delete(){
+        FileUtil.DeleteFileOrDirectory("Assets/KATAvatars/" + name);
+        AssetDatabase.Refresh();
     }
     public void saveFile(){
         string json = JsonUtility.ToJson(this);
         File.WriteAllText(Application.dataPath + "/KATAvatars/" + name + "/" + name + ".katprofile", json);
     }
-    public KatProfile fromFile(string name){
+    public static KatProfile fromFile(string name){
         string json = File.ReadAllText(Application.dataPath + "/KATAvatars/" + name + "/" + name + ".katprofile");
-        return JsonUtility.FromJson<KatProfile>(json);
+        KatProfile result = JsonUtility.FromJson<KatProfile>(json);
+		result.perfP = PerformanceProfile.fromFile(Application.dataPath + "/KATAvatars/" + name + "/");
+		return result;
     }
     public void openScene(){
+        EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
         EditorSceneManager.OpenScene("Assets/KATAvatars/" + name + "/" + name + ".unity");
+    }
+    public void openFolder(){
+        UnityEngine.Object obj = AssetDatabase.LoadAssetAtPath("Assets/KATAvatars/" + name + "/" + name + ".unity", typeof(UnityEngine.Object));
+        Selection.activeObject = obj;
+        EditorGUIUtility.PingObject(obj);
     }
     public void initProfile(GameObject obj){
         this.name = obj.name;
@@ -56,47 +71,33 @@ namespace KatStuff
         this.animators = obj.GetComponentsInChildren<Animator>().Length - 1;
         this.audio_sources = obj.GetComponentsInChildren<AudioSource>().Length;
         this.lights = obj.GetComponentsInChildren<Light>().Length;
+		
+		this.perfP = new PerformanceProfile(this);
+		this.perfP.saveFile(Application.dataPath + "/KATAvatars/" + name + "/");
+		saveFile();
     }
 
-    public int performance(){
-        int polysperf = rate(polys, 32000, 70000, 70000, 70000);
-        int boneamountperf = rate(boneamount, 75, 150, 256, 400);
-        int dynboneamountperf = rate(dynboneamount, 0, 16, 32, 256);
-        int dynbonecollidersperf = rate(dynbonecolliders, 0, 0, 4, 32);
-        int meshrenderersperf = rate(meshrenderers, 4, 8, 16, 32);
-        int particle_systemsperf = rate(particle_systems, 0, 4, 8, 16);
-        int clothperf = rate(cloth, 0, 1, 1, 1);
-        int animatorsperf = rate(animators, 1, 4, 16, 32);
-        int lightsperf = rate(lights, 0, 0, 0, 1);
-        int audio_sourcesperf = rate(audio_sources, 1, 4, 8, 8);
-
-        int result = 
-        polysperf+
-        boneamountperf+
-        dynboneamountperf+
-        dynbonecollidersperf+
-        meshrenderersperf+
-        particle_systemsperf+
-        clothperf+
-        animatorsperf+
-        lightsperf+
-        audio_sourcesperf;
-
-        result = result / 10;
-        return result;
-    }
-    public int rate(int i, int excellent, int good, int medium, int poor){
-        if(i < excellent){
-            return 0;
-        }else if(i < good){
-            return 1;
-        }else if(i < medium){
-            return 2;
-        }else if(i < poor){
-            return 3;
-        }else{
-            return 4;
+    public static KatProfile[] getAllInProject(){
+        string path = "Assets/KATAvatars/";
+        List<string> files = new List<string>();
+        List<KatProfile> result = new List<KatProfile>();
+        var info = new DirectoryInfo(path);
+        var fileInfo = info.GetFiles();
+        foreach (FileInfo f in fileInfo)
+        {
+            if (f.ToString().Contains(".meta"))
+            {
+                string fname = f.ToString().Split(new string[] { "KATAvatars\\" }, StringSplitOptions.None)[1].Replace(".meta", "");
+                if(AssetDatabase.IsValidFolder(path + fname) && File.Exists(f.ToString().Replace(".meta", "") + "\\" + fname + ".katprofile")){
+                    files.Add(fname);
+                }
+            }
         }
+        foreach (string foldername in files)
+        {
+            result.Add(fromFile(foldername));
+        }
+        return result.ToArray();
     }
 }
 }
