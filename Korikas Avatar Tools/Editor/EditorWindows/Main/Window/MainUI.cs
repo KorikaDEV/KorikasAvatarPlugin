@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using KATStuff;
 
 public class MainUI : EditorWindow
 {
@@ -41,7 +42,7 @@ public class MainUI : EditorWindow
     public static void ShowWindow()
     {
 
-        EditorWindow window = EditorWindow.GetWindow<MainUI>("KAT v1.1.4");
+        EditorWindow window = EditorWindow.GetWindow<MainUI>("KAT v2.0.0");
         window.minSize = new Vector2(265, 265);
     }
     void OnGUI()
@@ -61,7 +62,7 @@ public class MainUI : EditorWindow
         toolbarInt = GUILayout.Toolbar(toolbarInt, toolbarString);
 
         GUILayout.Space(50);
-        scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true,  GUILayout.Width(position.width),  GUILayout.Height(position.height - 74));
+        scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(position.width), GUILayout.Height(position.height - 74));
         switch (toolbarInt)
         {
             case 0:
@@ -90,20 +91,24 @@ public class MainUI : EditorWindow
         beatfinder = (TextAsset)EditorGUILayout.ObjectField("your beatfinder file:", beatfinder, typeof(TextAsset), true);
         audio = (AudioClip)EditorGUILayout.ObjectField("your audio:", audio, typeof(AudioClip), true);
         bool beatbutton = false;
-        beatcolor =  EditorGUILayout.ColorField("beatcolor:", beatcolor);
-        betweencolor =  EditorGUILayout.ColorField("color:", betweencolor);
+        beatcolor = EditorGUILayout.ColorField("beatcolor:", beatcolor);
+        betweencolor = EditorGUILayout.ColorField("color:", betweencolor);
         GUILayout.Label("zoom:");
         zoom = EditorGUILayout.Slider(zoom, 1, 2);
         GUILayout.Label("blur:");
         blur = EditorGUILayout.Slider(blur, 0, 5);
-        if(!(audio == null || beatfinder == null)){
+        if (!(audio == null || beatfinder == null))
+        {
             beatbutton = GUILayout.Button("generate beatfinder animation");
-        }else{
+        }
+        else
+        {
             GUI.enabled = false;
             beatbutton = GUILayout.Button("somethings missing");
             GUI.enabled = true;
         }
-        if(beatbutton){
+        if (beatbutton)
+        {
             BeatFinder.generateBeatAnimation(beatfinder, zoom, blur, beatcolor, betweencolor, audio);
         }
     }
@@ -276,5 +281,5 @@ public class MainUI : EditorWindow
             background = fromRGB(209f, 189f, 169f);
             buttons = fromRGB(203f, 164f, 112f);
         }
-    }
+}
 }

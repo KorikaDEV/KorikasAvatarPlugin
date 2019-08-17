@@ -4,6 +4,8 @@ using UnityEditor.Animations;
 using System.Collections.Generic;
 using System.Collections;
 using System;
+using KATStuff;
+
 public class BeatFinder : MonoBehaviour
 {
 

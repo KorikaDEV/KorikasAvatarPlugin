@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEditor;
-using KatStuff;
+using KATStuff;
 public class AvatarsWindow : EditorWindow
 {
     static Vector2 scrollPosition = Vector2.zero;
@@ -9,6 +9,7 @@ public class AvatarsWindow : EditorWindow
     [MenuItem("Korikas Avatar Tools/Avatars")]
     public static void ShowWindow()
     {
+        AvatarStructureBuilder.createKATRootFolder();
         EditorWindow window = EditorWindow.GetWindow<AvatarsWindow>("KATAvatars");
         window.minSize = new Vector2(265, 265);
     }

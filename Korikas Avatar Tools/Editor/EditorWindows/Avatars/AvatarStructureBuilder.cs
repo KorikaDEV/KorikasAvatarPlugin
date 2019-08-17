@@ -3,40 +3,26 @@ using UnityEngine;
 using UnityEditor.Animations;
 using VRCSDK2;
 using UnityEditor.SceneManagement;
-using KatStuff;
+using KATStuff;
 
 public class AvatarStructureBuilder : MonoBehaviour
 {
+    public static string nameval;
     public static void BuildOverride(GameObject selected)
     {
         EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
 
-        string nameval = selected.name;
+        nameval = selected.name;
 
-        if (!AssetDatabase.IsValidFolder("Assets/KATAvatars"))
-        {
-            AssetDatabase.CreateFolder("Assets", "KATAvatars");
-        }
         if (!AssetDatabase.IsValidFolder("Assets/KATAvatars/" + nameval))
         {
             AssetDatabase.CreateFolder("Assets/KATAvatars", nameval);
         }
-        if (!AssetDatabase.IsValidFolder("Assets/KATAvatars/" + nameval + "/Animations"))
-        {
-            AssetDatabase.CreateFolder("Assets/KATAvatars/" + nameval, "Animations");
-        }
-        if (!AssetDatabase.IsValidFolder("Assets/KATAvatars/" + nameval + "/Materials"))
-        {
-            AssetDatabase.CreateFolder("Assets/KATAvatars/" + nameval, "Materials");
-        }
-        if (!AssetDatabase.IsValidFolder("Assets/KATAvatars/" + nameval + "/Textures"))
-        {
-            AssetDatabase.CreateFolder("Assets/KATAvatars/" + nameval, "Textures");
-        }
-        if (!AssetDatabase.IsValidFolder("Assets/KATAvatars/" + nameval + "/Shaders"))
-        {
-            AssetDatabase.CreateFolder("Assets/KATAvatars/" + nameval, "Shaders");
-        }
+        createKATFolder("Animations");
+        createKATFolder("Audio");
+        createKATFolder("Materials");
+        createKATFolder("Textures");
+        createKATFolder("Shaders");
 
         string sourcepath = AssetDatabase.GetAssetPath(selected);
         AssetDatabase.CopyAsset(sourcepath, "Assets/KATAvatars/" + nameval + "/" + nameval + ".fbx");
@@ -44,6 +30,10 @@ public class AvatarStructureBuilder : MonoBehaviour
         EditorApplication.NewScene();
         GameObject newobj = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/KATAvatars/" + nameval + "/" + nameval + ".fbx", typeof(GameObject));
         newobj = (GameObject)Instantiate(newobj, new Vector3(0, 0, 0), Quaternion.identity);
+
+        GameObject view = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Korikas-Avatar-Tool/Korikas Avatar Tools/Examples/Prefabs/ViewpointSetter.prefab", typeof(GameObject));
+        view = (GameObject)Instantiate(view, new Vector3(0, 0, 0), Quaternion.identity);
+        view.name = "ViewpointSetter";
 
         GameObject newobjanimator = (GameObject)Instantiate(newobj, new Vector3(0, 0, 0), Quaternion.identity);
         newobjanimator.name = "animator";
@@ -80,6 +70,19 @@ public class AvatarStructureBuilder : MonoBehaviour
 
         EditorApplication.SaveScene("Assets/KATAvatars/" + nameval + "/" + nameval + ".unity");
 		AssetDatabase.Refresh();
+    }
+
+    public static void createKATRootFolder(){
+        if (!AssetDatabase.IsValidFolder("Assets/KATAvatars"))
+        {
+            AssetDatabase.CreateFolder("Assets", "KATAvatars");
+        }
+    }
+    public static void createKATFolder(string name){
+        if (!AssetDatabase.IsValidFolder("Assets/KATAvatars/" + nameval + "/" + name))
+        {
+            AssetDatabase.CreateFolder("Assets/KATAvatars/" + nameval, name);
+        }
     }
 
     public static void CreateAnimationFiles(string name)

@@ -6,7 +6,7 @@ using System.IO;
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 
-namespace KatStuff
+namespace KATStuff
 {
     public class KatProfile{
     public string name;

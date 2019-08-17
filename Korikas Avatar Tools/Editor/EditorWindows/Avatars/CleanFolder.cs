@@ -31,6 +31,8 @@ public class CleanFolder
             moveFileIfContains(s, ".jpg", "Textures");
             moveFileIfContains(s, ".mat", "Materials");
             moveFileIfContains(s, ".shader", "Shaders");
+            moveFileIfContains(s, ".mp3", "Audio");
+            moveFileIfContains(s, ".wav", "Audio");
         }
     }
 
