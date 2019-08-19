@@ -1,4 +1,5 @@
 # Korikas Avatar Tool
+![alt text](https://raw.githubusercontent.com/KorikaDEV/Korikas-Avatar-Tool/master/Korikas%20Avatar%20Tools/logo.png)
 ![](https://img.shields.io/badge/for-Unity-blue.svg)
 [![](https://img.shields.io/github/release/KorikaDEV/Korikas-Avatar-Tool.svg)](https://github.com/KorikaDEV/Korikas-Avatar-Tool/releases) ![](https://img.shields.io/github/languages/top/KorikaDEV/Korikas-Avatar-Tool.svg)
 ![](https://img.shields.io/codefactor/grade/github/KorikaDEV/Korikas-Avatar-Tool/master.svg)
@@ -38,6 +39,4 @@ There will be a tutorial!
 - Dynamic Bones
 ## Links
 [Discord](https://discord.gg/z2SmFqg) [VRCMods](https://vrcmods.com/user/Korika) [Youtube](https://www.youtube.com/hngisttoll) [CodeFactor](https://www.codefactor.io/repository/github/korikadev/korikas-avatar-tool)
-
-![alt text](https://raw.githubusercontent.com/KorikaDEV/Korikas-Avatar-Tool/master/Korikas%20Avatar%20Tools/logo.png)
 
