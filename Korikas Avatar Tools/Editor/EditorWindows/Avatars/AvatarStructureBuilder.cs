@@ -8,8 +8,13 @@ using KATStuff;
 public class AvatarStructureBuilder : MonoBehaviour
 {
     public static string nameval;
+    public static float progressval = 0f;
+
     public static void BuildOverride(GameObject selected)
     {
+        progressval = 0f;
+        updateProgressBar("generating folders...", 0.0f);
+
         EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
 
         nameval = selected.name;
@@ -24,16 +29,33 @@ public class AvatarStructureBuilder : MonoBehaviour
         createKATFolder("Textures");
         createKATFolder("Shaders");
 
+        //Generated Folders
+        updateProgressBar("copying avatar...", 1.0f);
+
         string sourcepath = AssetDatabase.GetAssetPath(selected);
         AssetDatabase.CopyAsset(sourcepath, "Assets/KATAvatars/" + nameval + "/" + nameval + ".fbx");
+
+        //Copied Avatar
+        updateProgressBar("generating animation files...", 1.0f);
+
         CreateAnimationFiles(nameval);
+
+        //Generated Animation Files
+        updateProgressBar("instantiating avatar...", 1.0f);
+
         EditorApplication.NewScene();
         GameObject newobj = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/KATAvatars/" + nameval + "/" + nameval + ".fbx", typeof(GameObject));
         newobj = (GameObject)Instantiate(newobj, new Vector3(0, 0, 0), Quaternion.identity);
 
+        //Instantiated Avatar
+        updateProgressBar("instantiating viewpointsetter...", 1.0f);
+
         GameObject view = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Korikas-Avatar-Tool/Korikas Avatar Tools/Examples/Prefabs/ViewpointSetter.prefab", typeof(GameObject));
         view = (GameObject)Instantiate(view, new Vector3(0, 0, 0), Quaternion.identity);
         view.name = "ViewpointSetter";
+
+        //Instantiated ViewpointSetter
+        updateProgressBar("instantiating animator...", 1.0f);
 
         GameObject newobjanimator = (GameObject)Instantiate(newobj, new Vector3(0, 0, 0), Quaternion.identity);
         newobjanimator.name = "animator";
@@ -54,10 +76,16 @@ public class AvatarStructureBuilder : MonoBehaviour
         GestureDisplay.addMotionToControllerByPath(path + "rocknroll.anim", ac);
         GestureDisplay.addMotionToControllerByPath(path + "handopen.anim", ac);
 
+        //Instantiated Animator
+        updateProgressBar("creating katprofile...", 1.0f);
+
         newobj.name = nameval;
 
         KatProfile kp = new KatProfile(newobj);
         kp.saveFile();
+
+        //Created Katprofile
+        updateProgressBar("deleting old file and adding the VRC_AvatarDescriptor...", 1);
 
         AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(selected));
 
@@ -68,8 +96,19 @@ public class AvatarStructureBuilder : MonoBehaviour
 
         addLipSync(newobj);
 
+        //Deleted old File and added the VRC_AvatarDescriptor
+        updateProgressBar("saving scene and refreshing files...", 1.0f);
+
         EditorApplication.SaveScene("Assets/KATAvatars/" + nameval + "/" + nameval + ".unity");
 		AssetDatabase.Refresh();
+
+        //Saved Scene and refreshed Files
+        EditorUtility.ClearProgressBar();
+    }
+
+    public static void updateProgressBar(string task, float addvalue){
+        progressval = progressval + addvalue;
+        EditorUtility.DisplayProgressBar("Avatar Structure Building", task, progressval / 8.0f);
     }
 
     public static void createKATRootFolder(){
