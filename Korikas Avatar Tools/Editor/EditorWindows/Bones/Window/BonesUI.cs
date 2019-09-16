@@ -1,28 +1,35 @@
 using UnityEngine;
 using UnityEditor;
 using KATStuff;
-public class BonesWindow : EditorWindow {
+public class BonesUI : EditorWindow {
 	[MenuItem("Korikas Avatar Tools/Bones")]
     public static void ShowWindow()
     {
-        EditorWindow window = EditorWindow.GetWindow<BonesWindow>("KATBones");
+        EditorWindow window = EditorWindow.GetWindow<BonesUI>("KATBones");
         window.minSize = new Vector2(265, 265);
     }
 	
 	bool addcolliders = false;
-	float position = 1f;
+	float posx = 1f;
+	float posy = 1f;
+	float posz = 1f;
 	float size = 0f;
 	
 	void OnGUI(){
 		GUILayout.Label("add/change handcolliders", EditorStyles.boldLabel);
 		addcolliders = EditorGUILayout.Toggle("enabled", addcolliders);
 		if(addcolliders){
-			GUILayout.Label("position:");
-			position = EditorGUILayout.Slider(position, 0, 5);
-			GUILayout.Label("size:");
+			GUILayout.Label("position:", EditorStyles.boldLabel);
+			GUILayout.Label("x:");
+			posx = EditorGUILayout.Slider(posx, -5, 5);
+			GUILayout.Label("y:");
+			posy = EditorGUILayout.Slider(posy, -5, 5);
+			GUILayout.Label("z:");
+			posz = EditorGUILayout.Slider(posz, -5, 5);
+			GUILayout.Label("size:", EditorStyles.boldLabel);
 			size = EditorGUILayout.Slider(size, 0, 5);
 
-			HandColliderAdder.addColliderIfDontExistsAndUpdate(GestureDisplay.getVRCSceneAvatar(), position, size);
+			HandColliderAdder.addColliderIfDontExistsAndUpdate(GestureDisplay.getVRCSceneAvatar(), new Vector3(posx,posy,posz), size);
 			SceneView.RepaintAll();
 		}
 	}
