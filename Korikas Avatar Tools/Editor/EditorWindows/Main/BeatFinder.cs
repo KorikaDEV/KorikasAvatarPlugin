@@ -52,7 +52,7 @@ public class BeatFinder : MonoBehaviour
                 if(step / 5 > maxtimestamp){
                     betweenval = (step - maxtimestamp) + fl[index - 1];
                 }else{
-                    betweenval = (step / 5) * 4 + fl[index - 1];
+                    betweenval = ((step / 5) * 4) + fl[index - 1];
                 }
                 keys.Add(new Keyframe(betweenval, min));
             }

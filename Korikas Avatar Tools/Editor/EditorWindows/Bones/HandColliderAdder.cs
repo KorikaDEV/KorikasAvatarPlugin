@@ -4,7 +4,6 @@ using KATStuff;
 
 public class HandColliderAdder : MonoBehaviour
 {
-	
     public static void addColliderIfDontExistsAndUpdate(GameObject g, Vector3 position, float size, bool addevery){
         Animator an = g.GetComponent<Animator>();
         checkAdd(HumanBodyBones.LeftHand, an, position, size);

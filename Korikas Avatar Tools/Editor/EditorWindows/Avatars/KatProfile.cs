@@ -55,7 +55,7 @@ namespace KATStuff
         this.dynboneamount = 0;
         SkinnedMeshRenderer[] meshes = obj.GetComponentsInChildren<SkinnedMeshRenderer>();
         foreach(SkinnedMeshRenderer smr in meshes){
-            this.polys = this.polys + smr.sharedMesh.triangles.Length/3;
+            this.polys = this.polys + (smr.sharedMesh.triangles.Length/3);
             foreach(Transform bone in smr.bones){
                 this.boneamount = this.boneamount + 1;
                 DynamicBone dyn = bone.gameObject.GetComponent<DynamicBone>();

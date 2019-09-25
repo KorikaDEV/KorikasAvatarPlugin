@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class BoneHelper : MonoBehaviour {
-    
+public class BoneHelper : MonoBehaviour
+{
     public static DynamicBone[] getAllDynBones(Transform avatar){
         Transform hips = avatar.gameObject.GetComponent<Animator>().GetBoneTransform(HumanBodyBones.Hips);
         Transform[] hipschilds = checkForEveryChildren(hips, new List<Transform>()).ToArray();
