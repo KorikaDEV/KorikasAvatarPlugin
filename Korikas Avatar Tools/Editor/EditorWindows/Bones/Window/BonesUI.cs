@@ -10,9 +10,10 @@ public class BonesUI : EditorWindow {
     }
 	
 	bool addcolliders = false;
-	float posx = 1f;
-	float posy = 1f;
-	float posz = 1f;
+	bool addtoeverydynbone = false;
+	float posx = 0f;
+	float posy = 0f;
+	float posz = 0f;
 	float size = 0f;
 	
 	void OnGUI(){
@@ -28,8 +29,9 @@ public class BonesUI : EditorWindow {
 			posz = EditorGUILayout.Slider(posz, -5, 5);
 			GUILayout.Label("size:", EditorStyles.boldLabel);
 			size = EditorGUILayout.Slider(size, 0, 5);
+			addtoeverydynbone = GUILayout.Button("add to every dynamicbone");
 
-			HandColliderAdder.addColliderIfDontExistsAndUpdate(GestureDisplay.getVRCSceneAvatar(), new Vector3(posx,posy,posz), size);
+			HandColliderAdder.addColliderIfDontExistsAndUpdate(GestureDisplay.getVRCSceneAvatar(), new Vector3(posx,posy,posz), size, addtoeverydynbone);
 			SceneView.RepaintAll();
 		}
 	}
