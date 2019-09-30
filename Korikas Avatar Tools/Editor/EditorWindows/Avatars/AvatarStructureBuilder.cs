@@ -126,25 +126,21 @@ public class AvatarStructureBuilder : MonoBehaviour
             AssetDatabase.CreateFolder(path, name);
         }
     }
-
+    public static AnimationClip ExampleAnim(){
+        return (AnimationClip)AssetDatabase.LoadAssetAtPath("Assets/Korikas-Avatar-Tool/Korikas Avatar Tools/Examples/Animations/ExampleGesture.anim", typeof(AnimationClip));
+    }
     public static void CreateAnimationFiles(string name)
     {
         string path = "Assets/KATAvatars/" + name + "/Animations/";
+        string examplepath = "Assets/Korikas-Avatar-Tool/Korikas Avatar Tools/Examples/Animations/ExampleGesture.anim";
         AssetDatabase.CopyAsset("Assets/VRCSDK/Examples/Sample Assets/Animation/CustomOverrideEmpty.overrideController", path + name + ".overrideController");
-        AnimationClip fingerpoint = new AnimationClip();
-        AssetDatabase.CreateAsset(fingerpoint, path + "fingerpoint.anim");
-        AnimationClip fist = new AnimationClip();
-        AssetDatabase.CreateAsset(fist, path + "fist.anim");
-        AnimationClip victory = new AnimationClip();
-        AssetDatabase.CreateAsset(victory, path + "victory.anim");
-        AnimationClip handgun = new AnimationClip();
-        AssetDatabase.CreateAsset(handgun, path + "handgun.anim");
-        AnimationClip thumbsup = new AnimationClip();
-        AssetDatabase.CreateAsset(thumbsup, path + "thumbsup.anim");
-        AnimationClip rocknroll = new AnimationClip();
-        AssetDatabase.CreateAsset(rocknroll, path + "rocknroll.anim");
-        AnimationClip handopen = new AnimationClip();
-        AssetDatabase.CreateAsset(handopen, path + "handopen.anim");
+        AssetDatabase.CopyAsset(examplepath, path + "fingerpoint.anim");
+        AssetDatabase.CopyAsset(examplepath, path + "fist.anim");
+        AssetDatabase.CopyAsset(examplepath, path + "victory.anim");
+        AssetDatabase.CopyAsset(examplepath, path + "handgun.anim");
+        AssetDatabase.CopyAsset(examplepath, path + "thumbsup.anim");
+        AssetDatabase.CopyAsset(examplepath, path + "rocknroll.anim");
+        AssetDatabase.CopyAsset(examplepath, path + "handopen.anim");
 
         AnimatorOverrideController animc = (AnimatorOverrideController)AssetDatabase.LoadAssetAtPath(path + name + ".overrideController", typeof(AnimatorOverrideController));
         animc["FINGERPOINT"] = (AnimationClip)AssetDatabase.LoadAssetAtPath(path + "fingerpoint.anim", typeof(AnimationClip));

@@ -4,19 +4,8 @@ using System.Collections.Generic;
 public class BoneHelper : MonoBehaviour
 {
     public static DynamicBone[] getAllDynBones(Transform avatar){
-        Transform hips = avatar.gameObject.GetComponent<Animator>().GetBoneTransform(HumanBodyBones.Hips);
-        Transform[] hipschilds = checkForEveryChildren(hips, new List<Transform>()).ToArray();
-
-        List<DynamicBone> result = new List<DynamicBone>();
-
-        foreach (Transform t in hipschilds)
-        {
-            if(t.gameObject.GetComponent<DynamicBone>()){
-                result.Add(t.gameObject.GetComponent<DynamicBone>());
-            }
-        }
-
-        return result.ToArray();
+        DynamicBone[] result = avatar.GetComponentsInChildren<DynamicBone>();
+        return result;
     }
 
     public static List<Transform> checkForEveryChildren(Transform t, List<Transform> tl){

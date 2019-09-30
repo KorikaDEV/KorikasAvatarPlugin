@@ -33,14 +33,16 @@ public class HandColliderAdder : MonoBehaviour
 
         foreach (DynamicBone item in dyns)
         {
+            List<DynamicBoneCollider> clist = item.m_Colliders;
             List<DynamicBoneCollider> colliderlist = new List<DynamicBoneCollider>();
             foreach (DynamicBoneCollider collider in item.m_Colliders)
             {
                 colliderlist.Add(collider);
             }
-
-            colliderlist.Add(left);
-            colliderlist.Add(right);
+            if(!clist.Contains(left) && !clist.Contains(right)){
+                colliderlist.Add(left);
+                colliderlist.Add(right);
+            }
 
             item.m_Colliders = colliderlist;
         }

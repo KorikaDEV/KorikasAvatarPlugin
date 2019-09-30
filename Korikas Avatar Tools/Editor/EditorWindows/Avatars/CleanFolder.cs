@@ -8,9 +8,9 @@ public class CleanFolder
 {
     static string path;
 
-    ///<summery>
+    ///<summary>
     ///It searches for the Folder of the avatarname and tries to put every .mat, .shader, .anim, .png and .jpg File into the right Folder
-    ///<summery>
+    ///<summary>
     public static void cleanFolder(string avatarname)
     {
         path = "Assets/KATAvatars/" + avatarname + "/";
@@ -36,9 +36,9 @@ public class CleanFolder
         }
     }
 
-    ///<summery>
+    ///<summary>
     ///It moves a File if it contains the indicator to the destination
-    ///<summery>
+    ///<summary>
     public static void moveFileIfContains(string file, string indicator, string destination)
     {
         if (file.Contains(indicator))
