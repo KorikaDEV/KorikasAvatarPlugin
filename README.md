@@ -30,7 +30,6 @@ It manages your projects structure, generates animations, copies contents from a
 
 ### future implementations:
 - a animator for easy keyframing
-- a backup functionality, that saves your avatar on every modified scene save into a unitypackage to a self-assigned file location
 - hand-collider adding through UI with a possability to change the size and see their size in realtime
 - automatic collider adding to every dynamic bone on the model
 - automatic sdk updater, that can be toggled
