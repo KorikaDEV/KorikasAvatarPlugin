@@ -1,9 +1,9 @@
 # Korikas Avatar Plugin
 ![alt text](https://raw.githubusercontent.com/KorikaDEV/Korikas-Avatar-Tool/master/Korikas%20Avatar%20Tools/logo.png)
 ![](https://img.shields.io/badge/for-Unity-blue.svg)
-[![](https://img.shields.io/github/release/KorikaDEV/Korikas-Avatar-Tool.svg)](https://github.com/KorikaDEV/Korikas-Avatar-Tool/releases) ![](https://img.shields.io/github/languages/top/KorikaDEV/Korikas-Avatar-Tool.svg)
-![](https://img.shields.io/codefactor/grade/github/KorikaDEV/Korikas-Avatar-Tool/master.svg)
-![](https://img.shields.io/github/downloads/KorikaDEV/Korikas-Avatar-Tool/total.svg)
+[![](https://img.shields.io/github/release/KorikaDEV/KorikasAvatarPlugin.svg)](https://github.com/KorikaDEV/KorikasAvatarPlugin/releases) ![](https://img.shields.io/github/languages/top/KorikaDEV/KorikasAvatarPlugin.svg)
+![](https://img.shields.io/codefactor/grade/github/KorikaDEV/KorikasAvatarPlugin/master.svg)
+![](https://img.shields.io/github/downloads/KorikaDEV/KorikasAvatarPlugin/total.svg)
 
 - [What is KAT?](https://github.com/KorikaDEV/Korikas-Avatar-Tool#what-is-kat)
   - [current features](https://github.com/KorikaDEV/Korikas-Avatar-Tool#current-features)
@@ -47,5 +47,5 @@ There will be a tutorial!
 - VRChats SDK
 - Dynamic Bones
 ## Links
-[Discord](https://discord.gg/z2SmFqg) [VRCMods](https://vrcmods.com/user/Korika) [Youtube](https://www.youtube.com/hngisttoll) [CodeFactor](https://www.codefactor.io/repository/github/korikadev/korikas-avatar-tool)
+[Discord](https://discord.gg/z2SmFqg) [VRCMods](https://vrcmods.com/user/Korika) [Youtube](https://www.youtube.com/hngisttoll) [CodeFactor](https://www.codefactor.io/repository/github/korikadev/korikasavatarplugin)
 
