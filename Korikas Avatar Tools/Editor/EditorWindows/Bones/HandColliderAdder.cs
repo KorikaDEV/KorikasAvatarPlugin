@@ -29,18 +29,20 @@ public class HandColliderAdder : MonoBehaviour
         DynamicBoneCollider left = an.GetBoneTransform(HumanBodyBones.LeftHand).GetComponent<DynamicBoneCollider>();
         DynamicBoneCollider right = an.GetBoneTransform(HumanBodyBones.RightHand).GetComponent<DynamicBoneCollider>();
 
-        DynamicBone[] dyns = BoneHelper.getAllDynBones(GestureDisplay.getVRCSceneAvatar().transform);
+        DynamicBone[] dyns = an.gameObject.GetComponentsInChildren<DynamicBone>();
 
         foreach (DynamicBone item in dyns)
         {
+            List<DynamicBoneCollider> clist = item.m_Colliders;
             List<DynamicBoneCollider> colliderlist = new List<DynamicBoneCollider>();
             foreach (DynamicBoneCollider collider in item.m_Colliders)
             {
                 colliderlist.Add(collider);
             }
-
-            colliderlist.Add(left);
-            colliderlist.Add(right);
+            if(!clist.Contains(left) && !clist.Contains(right)){
+                colliderlist.Add(left);
+                colliderlist.Add(right);
+            }
 
             item.m_Colliders = colliderlist;
         }

@@ -12,7 +12,11 @@ static class KatProfiler
 
     static void OnSceneSaved(Scene scene, string s)
     {
-        KatProfile kp = new KatProfile(GestureDisplay.getVRCSceneAvatar());
-        kp.saveFile();
+        if(GestureDisplay.getVRCSceneAvatar() != null){
+            KatProfile kp = new KatProfile(GestureDisplay.getVRCSceneAvatar());
+            kp.saveFile();
+        }else{
+            Debug.LogWarning("your avatar is hidden! you might make him visible again, so that KAT can save his performance statistics...");
+        }
     }
 }

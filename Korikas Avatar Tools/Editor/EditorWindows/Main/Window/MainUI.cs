@@ -40,7 +40,7 @@ public class MainUI : EditorWindow
     [MenuItem("Korikas Avatar Tools/Main")]
     public static void ShowWindow()
     {
-        EditorWindow window = EditorWindow.GetWindow<MainUI>("KAT v2.0.0");
+        EditorWindow window = EditorWindow.GetWindow<MainUI>("KAP v3.0.0");
         window.minSize = new Vector2(265, 265);
     }
     void OnGUI()

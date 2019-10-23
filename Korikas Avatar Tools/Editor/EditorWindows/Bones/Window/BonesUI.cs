@@ -17,7 +17,7 @@ public class BonesUI : EditorWindow {
 	float size = 0f;
 	
 	void OnGUI(){
-		GUILayout.Label("add/change handcolliders", EditorStyles.boldLabel);
+		GUILayout.Label("override handcolliders", EditorStyles.boldLabel);
 		addcolliders = EditorGUILayout.Toggle("enabled", addcolliders);
 		if(addcolliders){
 			GUILayout.Label("position:", EditorStyles.boldLabel);
