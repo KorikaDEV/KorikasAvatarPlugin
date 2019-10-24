@@ -62,17 +62,17 @@ public class PerformanceProfile {
         int i = (int) d;
         switch(i){
             case 0:
-            return MainUI.fromRGB(177, 255, 140);
+            return MainContainer.fromRGB(177, 255, 140);
             case 1:
-            return MainUI.fromRGB(207, 255, 140);
+            return MainContainer.fromRGB(207, 255, 140);
             case 2:
-            return MainUI.fromRGB(255, 253, 140);
+            return MainContainer.fromRGB(255, 253, 140);
             case 3:
-            return MainUI.fromRGB(255, 203, 140);
+            return MainContainer.fromRGB(255, 203, 140);
             case 4:
-            return MainUI.fromRGB(255, 155, 140);
+            return MainContainer.fromRGB(255, 155, 140);
         }
-        return MainUI.fromRGB(255, 155, 140);
+        return MainContainer.fromRGB(255, 155, 140);
     }
 	public int rate(int i, int excellent, int good, int medium, int poor){
         if(i <= excellent){

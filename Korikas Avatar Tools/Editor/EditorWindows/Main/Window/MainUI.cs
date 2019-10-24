@@ -262,21 +262,17 @@ public class MainUI : EditorWindow
             GUI.enabled = true;
         }
     }
-    public static Color fromRGB(float r, float g, float b)
-    {
-        return new Color(r / 255f, g / 255f, b / 255);
-    }
     public static void initColor()
     {
         if (EditorGUIUtility.isProSkin)
         {
-            background = fromRGB(124f, 96f, 77f);
-            buttons = fromRGB(193f, 144f, 92f);
+            background = MainContainer.fromRGB(124f, 96f, 77f);
+            buttons = MainContainer.fromRGB(193f, 144f, 92f);
         }
         else
         {
-            background = fromRGB(209f, 189f, 169f);
-            buttons = fromRGB(203f, 164f, 112f);
+            background = MainContainer.fromRGB(209f, 189f, 169f);
+            buttons = MainContainer.fromRGB(203f, 164f, 112f);
         }
     }
 }

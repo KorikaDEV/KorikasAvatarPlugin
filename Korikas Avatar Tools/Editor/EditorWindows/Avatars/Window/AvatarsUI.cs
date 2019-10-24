@@ -56,7 +56,7 @@ public class AvatarsUI : EditorWindow
 			GUILayout.BeginHorizontal();
 			AvatarsContainer.kpsscene[item.name] = GUILayout.Button("scene");
 			AvatarsContainer.kpsfolder[item.name] = GUILayout.Button("folder");
-            GUI.backgroundColor = MainUI.fromRGB(255f, 119f, 110f);
+            GUI.backgroundColor = MainContainer.fromRGB(255f, 119f, 110f);
 			AvatarsContainer.kpsdelete[item.name] = GUILayout.Button("delete");
             GUI.backgroundColor = Color.white;
 			GUILayout.EndHorizontal();
