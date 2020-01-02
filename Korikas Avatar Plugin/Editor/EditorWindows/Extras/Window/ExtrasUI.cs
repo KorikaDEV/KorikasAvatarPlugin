@@ -49,7 +49,13 @@ public class ExtrasUI : EditorWindow {
 
 		GUILayout.Label("add fixedjoints", EditorStyles.boldLabel);
 		GUILayout.Label("adds 2 fixedjoints for each hand!");
-		fixedjoints = GUILayout.Button("do it!");
+		if(!FixedJointAdder.hasFixedJoints()){
+			fixedjoints = GUILayout.Button("do it!");
+		}else{
+			GUI.enabled = false;
+			fixedjoints = GUILayout.Button("do it!");
+			GUI.enabled = true;
+		}
 		if(fixedjoints){
 			FixedJointAdder.add();
 		}

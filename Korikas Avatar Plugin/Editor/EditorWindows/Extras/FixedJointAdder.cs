@@ -19,10 +19,22 @@ public class FixedJointAdder : MonoBehaviour {
         Rigidbody rb = g.GetComponent<Rigidbody>();
         rb.angularDrag = 0.0f;
         rb.useGravity = false;
-
-        Rigidbody handrb = hand.gameObject.AddComponent<Rigidbody>();
+        Rigidbody handrb = hand.gameObject.GetComponent<Rigidbody>();
+        if(!handrb){
+            handrb = hand.gameObject.AddComponent<Rigidbody>();
+        }
         handrb.angularDrag = 0.0f;
         handrb.useGravity = false;
         fxj.connectedBody = handrb;
+        g.transform.position = hand.position;
+    }
+    public static bool hasFixedJoints(){
+        bool result = false;
+        GameObject g = GestureDisplay.getVRCSceneAvatar();
+        FixedJoint[] fxjs = g.transform.GetComponentsInChildren<FixedJoint>();
+        if(fxjs.Length > 0){
+            result = true;
+        }
+        return result;
     }
 }
