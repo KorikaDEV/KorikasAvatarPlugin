@@ -1,20 +1,24 @@
 using UnityEngine;
 using UnityEditor;
 using KAPStuff;
-public class BonesUI : EditorWindow {
-	[MenuItem("Korikas Avatar Plugin/Bones")]
+public class ExtrasUI : EditorWindow {
+	[MenuItem("Korikas Avatar Plugin/Extras")]
     public static void ShowWindow()
     {
-        EditorWindow window = EditorWindow.GetWindow<BonesUI>("KAPBones");
+        EditorWindow window = EditorWindow.GetWindow<ExtrasUI>("KAPExtras");
         window.minSize = new Vector2(265, 265);
     }
 	
 	bool addcolliders = false;
+	bool resize = false;
+	bool fixedjoints = false;
 	bool addtoeverydynbone = false;
 	float posx = 0f;
 	float posy = 0f;
 	float posz = 0f;
 	float size = 0f;
+
+	float avatarSize = 0f;
 	
 	void OnGUI(){
 		GUILayout.Label("override handcolliders", EditorStyles.boldLabel);
@@ -33,6 +37,21 @@ public class BonesUI : EditorWindow {
 
 			HandColliderAdder.addColliderIfDontExistsAndUpdate(GestureDisplay.getVRCSceneAvatar(), new Vector3(posx,posy,posz), size, addtoeverydynbone);
 			SceneView.RepaintAll();
+		}
+		GUILayout.Label("resize avatar", EditorStyles.boldLabel);
+		GUILayout.Label("current size: " + AvatarResizer.getCurrentSize() + "m");
+		GUILayout.Label("size in meters:");
+		avatarSize = EditorGUILayout.Slider(avatarSize, 0, 5);
+		resize = GUILayout.Button("resize");
+		if(resize){
+			AvatarResizer.resize(avatarSize);
+		}
+
+		GUILayout.Label("add fixedjoints", EditorStyles.boldLabel);
+		GUILayout.Label("adds 2 fixedjoints for each hand!");
+		fixedjoints = GUILayout.Button("do it!");
+		if(fixedjoints){
+			FixedJointAdder.add();
 		}
 	}
 }
