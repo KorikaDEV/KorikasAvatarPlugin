@@ -9,6 +9,7 @@ public class AvatarResizer : MonoBehaviour {
         if(size > 0.0f){
             float percent = size / height_cm;
             avatar.transform.localScale *= percent;
+            avatar.GetComponent<VRC_AvatarDescriptor>().ViewPosition *= percent;
         }
     }
     public static float getCurrentSize(){
