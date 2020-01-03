@@ -1,6 +1,7 @@
 # Korikas Avatar Plugin
 ![alt text](https://raw.githubusercontent.com/KorikaDEV/KorikasAvatarPlugin/master/Korikas%20Avatar%20Plugin/logo.png)
 ![](https://img.shields.io/badge/for-Unity-blue.svg)
+![](https://img.shields.io/discord/582847031958175755?color=%237289DA)
 [![](https://img.shields.io/github/release/KorikaDEV/KorikasAvatarPlugin.svg)](https://github.com/KorikaDEV/KorikasAvatarPlugin/releases) ![](https://img.shields.io/github/languages/top/KorikaDEV/KorikasAvatarPlugin.svg)
 [![CodeFactor](https://www.codefactor.io/repository/github/korikadev/korikasavatarplugin/badge)](https://www.codefactor.io/repository/github/korikadev/korikasavatarplugin)
 ![](https://img.shields.io/github/downloads/KorikaDEV/KorikasAvatarPlugin/total.svg)
