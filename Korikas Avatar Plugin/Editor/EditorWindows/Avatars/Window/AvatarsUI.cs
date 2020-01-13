@@ -29,7 +29,7 @@ public class AvatarsUI : EditorWindow
 			GUILayout.Space(18);
 			EditorGUILayout.EndVertical();
 			GUI.color = Color.white;
-			AvatarsContainer.kpsfoldout[item.name] = EditorGUILayout.Foldout(AvatarsContainer.kpsfoldout[item.name], "perfomance details"); 
+			AvatarsContainer.kpsfoldout[item.name] = EditorGUILayout.Foldout(AvatarsContainer.kpsfoldout[item.name], "details"); 
 			if(AvatarsContainer.kpsfoldout[item.name]){
                 GUILayout.BeginHorizontal();
                 addPerfSection(item.polys, item.perfP.polysperf, "PolygonCollider2D Icon");
@@ -60,15 +60,15 @@ public class AvatarsUI : EditorWindow
                 DrawBreak();
                 addPerfSection(item.cloth, item.perfP.clothperf, "Cloth Icon");
                 GUILayout.EndHorizontal();
+                GUILayout.Space(5);
+                GUILayout.BeginHorizontal();
+                AvatarsContainer.kpsscene[item.name] = GUILayout.Button("scene");
+                AvatarsContainer.kpsfolder[item.name] = GUILayout.Button("folder");
+                GUI.backgroundColor = MainContainer.fromRGB(255f, 119f, 110f);
+                AvatarsContainer.kpsdelete[item.name] = GUILayout.Button("delete");
+                GUI.backgroundColor = Color.white;
+                GUILayout.EndHorizontal();
 			}
-			GUILayout.Space(5);
-			GUILayout.BeginHorizontal();
-			AvatarsContainer.kpsscene[item.name] = GUILayout.Button("scene");
-			AvatarsContainer.kpsfolder[item.name] = GUILayout.Button("folder");
-            GUI.backgroundColor = MainContainer.fromRGB(255f, 119f, 110f);
-			AvatarsContainer.kpsdelete[item.name] = GUILayout.Button("delete");
-            GUI.backgroundColor = Color.white;
-			GUILayout.EndHorizontal();
             GuiLine(2);
 
             if(AvatarsContainer.kpsscene[item.name]){
