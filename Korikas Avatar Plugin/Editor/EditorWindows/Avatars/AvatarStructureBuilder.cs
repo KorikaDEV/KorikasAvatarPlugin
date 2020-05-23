@@ -119,7 +119,7 @@ public class AvatarStructureBuilder : MonoBehaviour
     {
         string path = "Assets/KAPAvatars/" + name + "/Animations/";
         string examplepath = "Assets/KorikasAvatarPlugin/Korikas Avatar Plugin/Examples/Animations/ExampleGesture.anim";
-        AssetDatabase.CopyAsset("Assets/VRCSDK/Examples/Sample Assets/Animation/CustomOverrideEmpty.overrideController", "Assets/KAPAvatars/" + name + "/" + name + ".overrideController");
+        AssetDatabase.CopyAsset("Assets/VRChat Examples/Examples2/Animation/SDK2/CustomOverrideEmpty.overrideController", "Assets/KAPAvatars/" + name + "/" + name + ".overrideController");
         AssetDatabase.CopyAsset(examplepath, path + "fingerpoint.anim");
         AssetDatabase.CopyAsset(examplepath, path + "fist.anim");
         AssetDatabase.CopyAsset(examplepath, path + "victory.anim");
