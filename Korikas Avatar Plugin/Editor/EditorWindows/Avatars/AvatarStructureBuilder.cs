@@ -56,13 +56,6 @@ public class AvatarStructureBuilder : MonoBehaviour
         view.name = "ViewpointSetter";
 
         //Instantiated ViewpointSetter
-        updateProgressBar("instantiating gesturebuilder...", 1.0f);
-
-        GameObject ges = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/KorikasAvatarPlugin/Korikas Avatar Plugin/Examples/Prefabs/GestureBuilder.prefab", typeof(GameObject));
-        ges = (GameObject)Instantiate(ges, new Vector3(0, 0, 0), Quaternion.identity);
-        ges.name = "GestureBuilder";
-
-        //Instantiated GestureBuilder
         updateProgressBar("creating KAPprofile...", 1.0f);
 
         newobj.name = nameval;
