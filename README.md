@@ -6,16 +6,6 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/korikadev/korikasavatarplugin/badge)](https://www.codefactor.io/repository/github/korikadev/korikasavatarplugin)
 [![](https://img.shields.io/github/downloads/KorikaDEV/KorikasAvatarPlugin/total.svg)](https://github.com/KorikaDEV/KorikasAvatarPlugin/releases)
 
-- [What is KAP?](https://github.com/KorikaDEV/Korikas-Avatar-Tool#what-is-kat)
-  - [current features](https://github.com/KorikaDEV/Korikas-Avatar-Tool#current-features)
-  - [future implementations](https://github.com/KorikaDEV/Korikas-Avatar-Tool#future-implementations)
-- [Found a bug?](https://github.com/KorikaDEV/Korikas-Avatar-Tool#found-a-bug)
-- [Where are the ideas coming from?](https://github.com/KorikaDEV/Korikas-Avatar-Tool#where-are-the-ideas-coming-from)
-- [How do I use it?](https://github.com/KorikaDEV/Korikas-Avatar-Tool#how-do-i-use-it)
-  - [installation](https://github.com/KorikaDEV/Korikas-Avatar-Tool#installation)
-  - [requirements](https://github.com/KorikaDEV/Korikas-Avatar-Tool#requirements)
-- [Links](https://github.com/KorikaDEV/Korikas-Avatar-Tool#links)
-
 ## What is KAP?
 Korikas Avatar Plugin (KAP) is a huge collection of tools for making VRChat avatars!
 It manages your projects structure, generates animations, copies contents from avatar to avatar and will have a lot of other features in the future...
@@ -34,8 +24,8 @@ It manages your projects structure, generates animations, copies contents from a
 ### future implementations:
 - automatic sdk updater, that can be toggled
 
-## Found a bug?
-Just tell me about it on my discord in #🐈need-help-with-kap! Here is the [invite](https://discord.gg/z2SmFqg).
+## How to contribute
+You can contribute by creating issues for this repository or by joining our [discord](https://discord.gg/z2SmFqg) and telling me there what problem/ideas you have.
 ## Where are the ideas coming from?
 I really fell in love with VRChat based unity tools and thats why I am trying to gather them all into one usefull plugin. Thats the reason, why you will find some features in other projects based on VRChat! That doesnt mean, that I steal code. Everything within this project is self-implemented and I wish, that where was some kind of way, to show you that Im not stealing your credentails!
 ## How do I use it?
